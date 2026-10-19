@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Friends BBQ | Authentic Knoxville Wood-Smoked Barbecue & Soul Food</title>
+  
+  <meta name="description" content="Order authentic Knoxville soul food and hardwood-smoked barbecue from Friends BBQ. Hickory ribs, smoked meatloaf, wings, collard greens & mac at Marble City Market & Magnolia Ave.">
+  <meta property="og:title" content="Friends BBQ | Knoxville's Soul Smokehouse">
+  <meta property="og:description" content="Authentic wood-smoked ribs, wings, turkey legs, meatloaf, and homemade sides in Knoxville, TN. Order pickup or book catering.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80">
+  <meta property="og:url" content="https://www.facebook.com/FriendsBBQ/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-dark: #0e0d0c;
+      --bg-surface: #171513;
+      --bg-card: #201c19;
+      --bg-card-hover: #292420;
+      --amber-primary: #e8590c;
+      --amber-hover: #f76707;
+      --gold-accent: #f59f00;
+      --text-main: #f8f9fa;
+      --text-muted: #b0a8a0;
+      --text-dim: #7d756d;
+      --border: #332d27;
+      --border-accent: rgba(232, 89, 12, 0.4);
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-quote: 'Playfair Display', serif;
+      --radius: 10px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: radial-gradient(circle at 50% 0%, rgba(232, 89, 12, 0.08) 0%, transparent 60%);
+    }
+
+    h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: 0.05em; text-transform: uppercase; font-weight: 400; }
+    p { color: var(--text-muted); }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+      padding: 0.85rem 1.6rem; font-weight: 700; font-size: 0.92rem; text-transform: uppercase;
+      letter-spacing: 0.06em; border-radius: var(--radius); text-decoration: none;
+      transition: all 0.25s ease; cursor: pointer; border: none;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--amber-primary), #d9480f); color: #fff;
+      box-shadow: 0 4px 20px rgba(232, 89, 12, 0.35);
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, var(--amber-hover), var(--amber-primary));
+      transform: translateY(-2px); box-shadow: 0 6px 25px rgba(232, 89, 12, 0.5);
+    }
+    .btn-outline { background: transparent; color: var(--text-main); border: 1px solid var(--border); }
+    .btn-outline:hover {
+      border-color: var(--gold-accent); color: var(--gold-accent);
+      background-color: rgba(245, 159, 0, 0.05); transform: translateY(-2px);
+    }
+    .btn-sm { padding: 0.5rem 1rem; font-size: 0.8rem; }
+
+    .header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(14, 13, 12, 0.94); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .navbar {
+      max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between;
+      align-items: center; padding: 1rem 1.5rem;
+    }
+    .brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .brand-flame {
+      width: 36px; height: 36px; background: linear-gradient(135deg, var(--amber-primary), var(--gold-accent));
+      border-radius: 8px; display: grid; place-items: center; color: #fff; font-size: 1.25rem;
+    }
+    .brand-title { font-size: 1.9rem; color: #fff; line-height: 1; }
+    .brand-subtitle { display: block; font-size: 0.65rem; color: var(--gold-accent); letter-spacing: 0.2em; font-weight: 700; }
+    .nav-links { display: flex; align-items: center; gap: 1.6rem; list-style: none; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.92rem; font-weight: 600; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--amber-primary); }
+
+    .nav-cart-trigger {
+      background: var(--bg-card); border: 1px solid var(--border-accent); color: #fff;
+      padding: 0.55rem 1.1rem; border-radius: 30px; display: flex; align-items: center; gap: 0.5rem;
+      cursor: pointer; font-weight: 700; font-size: 0.85rem;
+    }
+    .cart-count-badge {
+      background: var(--amber-primary); color: #fff; border-radius: 50%;
+      width: 22px; height: 22px; display: grid; place-items: center; font-size: 0.75rem; font-weight: 800;
+    }
+    .mobile-toggle { display: none; background: none; border: none; color: #fff; font-size: 1.8rem; cursor: pointer; }
+
+    .status-strip { background: var(--bg-surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 1rem 1.5rem; }
+    .status-inner { max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
+    .status-pill { display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.9rem; font-weight: 600; }
+    .pulse-dot { width: 10px; height: 10px; background-color: #51cf66; border-radius: 50%; }
+
+    .hero {
+      padding: 4.5rem 1.5rem 5.5rem; max-width: 1240px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: 3.5rem; min-height: 85vh;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(232, 89, 12, 0.12);
+      border: 1px solid var(--border-accent); padding: 0.45rem 1rem; border-radius: 100px;
+      font-size: 0.78rem; font-weight: 700; color: var(--gold-accent); text-transform: uppercase; margin-bottom: 1.5rem;
+    }
+    .hero-title { font-size: clamp(3.2rem, 6vw, 5.6rem); line-height: 0.95; margin-bottom: 1.5rem; }
+    .hero-title .glow { color: var(--amber-primary); text-shadow: 0 0 35px rgba(232, 89, 12, 0.45); }
+    .hero-lead { font-size: 1.18rem; margin-bottom: 2.2rem; max-width: 540px; color: #dfd8d0; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2.5rem; }
+    .hero-highlights { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; padding-top: 1.8rem; border-top: 1px solid var(--border); }
+    .stat-num { font-family: var(--font-display); font-size: 2.2rem; color: var(--gold-accent); line-height: 1; }
+    .stat-label { font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; font-weight: 600; }
+
+    .hero-card { position: relative; }
+    .hero-card-img-wrap { border-radius: 16px; overflow: hidden; box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8); border: 1px solid var(--border); }
+    .hero-card-img { width: 100%; height: 480px; object-fit: cover; display: block; }
+    .floating-ribbon {
+      position: absolute; bottom: -20px; left: -20px; background: var(--bg-surface);
+      border: 1px solid var(--border-accent); border-radius: 12px; padding: 1.1rem 1.4rem;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.7); display: flex; align-items: center; gap: 1rem;
+    }
+    .floating-ribbon .icon-box { background: var(--amber-primary); width: 44px; height: 44px; border-radius: 10px; display: grid; place-items: center; font-size: 1.3rem; }
+
+    section { padding: 5.5rem 1.5rem; max-width: 1240px; margin: 0 auto; }
+    .section-header { text-align: center; max-width: 680px; margin: 0 auto 3.5rem; }
+    .section-tag { font-size: 0.8rem; letter-spacing: 0.2em; color: var(--amber-primary); font-weight: 800; text-transform: uppercase; margin-bottom: 0.5rem; display: inline-block; }
+    .section-title { font-size: clamp(2.4rem, 4.5vw, 3.6rem); line-height: 1.05; margin-bottom: 1rem; }
+
+    .locations-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+    .location-box {
+      background: var(--bg-surface); border: 1px solid var(--border); border-radius: 14px;
+      padding: 2.2rem; display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .location-badge { font-size: 0.72rem; font-weight: 800; color: var(--gold-accent); background: rgba(245, 159, 0, 0.1); padding: 0.35rem 0.8rem; border-radius: 6px; margin-bottom: 1rem; display: inline-block; }
+    .location-name { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    .location-details { list-style: none; margin: 1.4rem 0 1.8rem; display: flex; flex-direction: column; gap: 0.75rem; }
+    .location-details li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.95rem; color: var(--text-muted); }
+    .location-btn-group { display: flex; flex-direction: column; gap: 0.6rem; }
+
+    .menu-tabs { display: flex; justify-content: center; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 3rem; }
+    .tab-btn {
+      background: var(--bg-surface); color: var(--text-muted); border: 1px solid var(--border);
+      padding: 0.75rem 1.6rem; font-size: 0.92rem; font-weight: 700; text-transform: uppercase;
+      border-radius: 30px; cursor: pointer; transition: all 0.2s;
+    }
+    .tab-btn.active, .tab-btn:hover { background: var(--amber-primary); color: #fff; border-color: var(--amber-primary); }
+
+    .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.6rem; }
+    .menu-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 1.6rem; display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .card-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem; }
+    .item-title { font-size: 1.4rem; color: #fff; }
+    .item-price { font-family: var(--font-display); font-size: 1.5rem; color: var(--gold-accent); }
+    .item-desc { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.2rem; }
+    .item-footer { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding-top: 0.8rem; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+    .item-tag { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; background: rgba(232, 89, 12, 0.15); color: var(--amber-primary); padding: 0.25rem 0.55rem; border-radius: 4px; }
+    .add-to-order-btn {
+      background: var(--bg-surface); color: #fff; border: 1px solid var(--border-accent);
+      padding: 0.45rem 0.9rem; border-radius: 6px; font-size: 0.8rem; font-weight: 700; cursor: pointer;
+    }
+    .add-to-order-btn:hover { background: var(--amber-primary); border-color: var(--amber-primary); }
+
+    .story {
+      background: var(--bg-surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      border-radius: 20px; padding: 4.5rem 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+    .story-quote { font-family: var(--font-quote); font-size: 1.5rem; font-style: italic; color: #f1ede8; border-left: 3px solid var(--amber-primary); padding-left: 1.5rem; margin: 1.8rem 0; }
+    .story-quote-link { display: inline-flex; font-size: 0.88rem; font-family: var(--font-body); font-style: normal; margin-top: 0.8rem; color: var(--gold-accent); text-decoration: underline; }
+    .story-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .story-img { width: 100%; height: 220px; object-fit: cover; border-radius: 10px; border: 1px solid var(--border); }
+    .story-img.tall { grid-row: span 2; height: 450px; }
+
+    .catering-calc {
+      background: linear-gradient(135deg, #1b1714 0%, #12100e 100%);
+      border: 1px solid var(--border-accent); border-radius: 18px; padding: 3rem;
+    }
+    .calc-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items: center; }
+    .form-group { margin-bottom: 1.4rem; }
+    .form-label { display: block; font-size: 0.85rem; text-transform: uppercase; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-main); }
+    .form-control, .form-select {
+      width: 100%; background: var(--bg-dark); border: 1px solid var(--border);
+      padding: 0.9rem 1.1rem; border-radius: 8px; color: #fff; font-family: var(--font-body); font-size: 1rem;
+    }
+    .estimate-display { background: var(--bg-card); border: 1px dashed var(--border-accent); border-radius: 12px; padding: 2.2rem; text-align: center; }
+    .est-amount { font-family: var(--font-display); font-size: 3.5rem; color: var(--gold-accent); }
+    .est-breakdown { font-size: 0.85rem; color: var(--text-dim); margin-top: 1rem; }
+
+    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.8rem; }
+    .review-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; }
+    .stars { color: var(--gold-accent); font-size: 1.1rem; margin-bottom: 1rem; }
+    .review-body { font-size: 0.95rem; color: #ded7cf; font-style: italic; margin-bottom: 1.5rem; }
+    .review-author { display: flex; align-items: center; gap: 0.75rem; }
+    .author-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--amber-primary); display: grid; place-items: center; font-weight: 800; color: #fff; }
+    .author-info h4 { font-size: 1rem; color: #fff; }
+    .author-info span { font-size: 0.78rem; color: var(--text-dim); }
+
+    .floating-cart-btn {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 1000;
+      background: linear-gradient(135deg, var(--amber-primary), #d9480f); color: #fff;
+      padding: 0.9rem 1.6rem; border-radius: 50px; display: flex; align-items: center; gap: 0.8rem;
+      font-weight: 800; cursor: pointer; border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+    .cart-drawer-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.75); z-index: 2000; display: none; }
+    .cart-drawer-overlay.active { display: block; }
+    .cart-drawer {
+      position: fixed; top: 0; right: -450px; width: 100%; max-width: 440px; height: 100%;
+      background: var(--bg-surface); border-left: 1px solid var(--border); z-index: 2001;
+      display: flex; flex-direction: column; transition: right 0.35s ease;
+    }
+    .cart-drawer.active { right: 0; }
+    .drawer-header { padding: 1.5rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    .drawer-title { font-size: 1.8rem; color: #fff; }
+    .close-drawer { background: none; border: none; color: var(--text-muted); font-size: 1.6rem; cursor: pointer; }
+    .drawer-body { flex: 1; overflow-y: auto; padding: 1.5rem; }
+    .cart-empty { text-align: center; padding: 3rem 1rem; color: var(--text-dim); }
+    .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--border); }
+    .cart-item-title { font-size: 0.95rem; font-weight: 700; color: #fff; }
+    .cart-item-price { font-size: 0.85rem; color: var(--gold-accent); }
+    .qty-controls { display: flex; align-items: center; gap: 0.5rem; }
+    .qty-btn { background: var(--bg-card); border: 1px solid var(--border); color: #fff; width: 28px; height: 28px; border-radius: 4px; cursor: pointer; }
+    .drawer-footer { padding: 1.5rem; border-top: 1px solid var(--border); background: var(--bg-card); }
+    .summary-line { display: flex; justify-content: space-between; font-size: 0.92rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+    .summary-line.total { font-size: 1.3rem; font-weight: 800; color: #fff; border-top: 1px dashed var(--border); padding-top: 0.75rem; }
+
+    .checkout-modal-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85); z-index: 3000; display: none; place-items: center; padding: 1.5rem; }
+    .checkout-modal-overlay.active { display: grid; }
+    .checkout-modal { background: var(--bg-surface); border: 1px solid var(--border-accent); border-radius: 14px; max-width: 500px; width: 100%; padding: 2.2rem; }
+
+    footer { background: #090807; border-top: 1px solid var(--border); padding: 5rem 1.5rem 2.5rem; }
+    .footer-grid { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3.5rem; }
+    .footer-col h4 { font-size: 1.25rem; color: #fff; margin-bottom: 1.3rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+    .footer-col a { color: var(--text-muted); text-decoration: none; font-size: 0.92rem; }
+    .bottom-bar { max-width: 1240px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.06); font-size: 0.82rem; color: var(--text-dim); }
+
+    @media (max-width: 992px) {
+      .hero, .story, .calc-grid { grid-template-columns: 1fr; text-align: center; }
+      .floating-ribbon { left: 50%; transform: translateX(-50%); bottom: -25px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-toggle { display: block; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="navbar">
+      <a href="#" class="brand">
+        <div class="brand-flame">🔥</div>
+        <div>
+          <span class="brand-title">FRIENDS BBQ</span>
+          <span class="brand-subtitle">KNOXVILLE, TN • SOUL SMOKEHOUSE</span>
+        </div>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#locations">Locations</a></li>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#catering">Catering</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li>
+          <button class="nav-cart-trigger" onclick="toggleCartDrawer(true)">
+            🛒 <span>Cart</span>
+            <span class="cart-count-badge" id="navCartBadge">0</span>
+          </button>
+        </li>
+        <li><a href="tel:8659364290" class="btn btn-outline btn-sm">📞 (865) 936-4290</a></li>
+        <li><a href="https://www.facebook.com/FriendsBBQ/" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Facebook</a></li>
+      </ul>
+
+      <button class="mobile-toggle" id="mobileToggle">☰</button>
+    </div>
+  </header>
+
+  <div class="status-strip">
+    <div class="status-inner">
+      <div class="status-pill">
+        <span class="pulse-dot"></span>
+        <span><strong>Smokers Hot & Rolling:</strong> Magnolia Stand & Marble City Market</span>
+      </div>
+      <div class="status-pill" style="color: var(--gold-accent);">
+        <span>⭐ East Knoxville's Smoked Meatloaf & Tender Ribs</span>
+      </div>
+      <div>
+        <a href="#locations" style="color: var(--text-muted); text-decoration: none; font-size: 0.85rem; font-weight: 700;">View Hours →</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">🪵 Hardwood Hickory Smoked • Soul Food</div>
+      <h1 class="hero-title">WE BRING <span class="glow">SOUL</span> TO SOUL FOOD.</h1>
+      <p class="hero-lead">
+        Locally owned Knoxville native craft. Every bite of our tender ribs, hickory smoked meatloaf, crispy catfish, and five-cheese mac will send you straight down memory lane.
+      </p>
+      
+      <div class="hero-actions">
+        <a href="#menu" class="btn btn-primary">Start Online Order</a>
+        <a href="#catering" class="btn btn-outline">Book Event Catering</a>
+        <a href="https://www.marblecitymarket.com/our-vendors/friends-bbq/" target="_blank" rel="noopener" class="btn btn-outline">Marble City Vendor Stall ↗</a>
+      </div>
+
+      <div class="hero-highlights">
+        <div><div class="stat-num">100%</div><div class="stat-label">Hardwood Smoked</div></div>
+        <div><div class="stat-num">6+ YRS</div><div class="stat-label">Smoking for Knox</div></div>
+        <div><div class="stat-num">14-HR</div><div class="stat-label">Slow Pit Perfection</div></div>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hero-card-img-wrap">
+        <img class="hero-card-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80" alt="Smoked barbecue ribs on pit">
+      </div>
+      <div class="floating-ribbon">
+        <div class="icon-box">🍖</div>
+        <div>
+          <strong style="color: #fff; font-size: 0.95rem; display: block;">Pitmaster Specialty</strong>
+          <span style="font-size: 0.8rem; color: var(--text-muted);">Smoked Meatloaf & Turkey Legs</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="locations" style="padding-top: 2rem;">
+    <div class="section-header">
+      <span class="section-tag">Where To Find Us</span>
+      <h2 class="section-title">TWO WAYS TO GET YOUR FIX</h2>
+    </div>
+
+    <div class="locations-grid">
+      <div class="location-box">
+        <div>
+          <span class="location-badge">Downtown Food Hall</span>
+          <h3 class="location-name">Marble City Market Stall</h3>
+          <p>Full dining hall, craft bar drinks, outdoor patio seating, and takeout pickups.</p>
+          <ul class="location-details">
+            <li><span class="location-icon">📍</span><span>333 W Depot Ave, Suite 110, Knoxville, TN 37917</span></li>
+            <li><span class="location-icon">⏰</span><span>Sun–Thu: 11:00 AM – 9:00 PM<br>Fri–Sat: 11:00 AM – 10:00 PM</span></li>
+            <li><span class="location-icon">📞</span><span>Call for Pickup: (865) 936-4290</span></li>
+          </ul>
+        </div>
+        <div class="location-btn-group">
+          <a href="https://www.marblecitymarket.com/our-vendors/friends-bbq/" target="_blank" rel="noopener" class="btn btn-primary" style="width: 100%;">View Marble City Market Stall Profile ↗</a>
+          <a href="https://maps.google.com/?q=333+W+Depot+Ave+Knoxville+TN" target="_blank" rel="noopener" class="btn btn-outline" style="width: 100%;">Get Directions</a>
+        </div>
+      </div>
+
+      <div class="location-box">
+        <div>
+          <span class="location-badge">East Knox Smoker Stand</span>
+          <h3 class="location-name">Magnolia Food Stand</h3>
+          <p>The outdoor hardwood smoker pit. Ribs, chicken, hot dogs, and sides to go.</p>
+          <ul class="location-details">
+            <li><span class="location-icon">📍</span><span>2580 E Magnolia Ave, Knoxville, TN 37914</span></li>
+            <li><span class="location-icon">⏰</span><span>Thursday – Saturday: 11:00 AM – Sold Out</span></li>
+            <li><span class="location-icon">🔥</span><span>Outdoor Grilling & Community Service Events</span></li>
+          </ul>
+        </div>
+        <div class="location-btn-group">
+          <a href="https://www.facebook.com/FriendsBBQ/" target="_blank" rel="noopener" class="btn btn-primary" style="width: 100%;">Check Magnolia Smoke Schedule</a>
+          <a href="https://maps.google.com/?q=2580+E+Magnolia+Ave+Knoxville+TN" target="_blank" rel="noopener" class="btn btn-outline" style="width: 100%;">Get Directions</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu">
+    <div class="section-header">
+      <span class="section-tag">Cooked Low & Slow</span>
+      <h2 class="section-title">THE SOUL FOOD BBQ MENU</h2>
+      <p>Click <strong>"+ Add to Order"</strong> on any item to build your takeout spread.</p>
+    </div>
+
+    <div class="menu-tabs">
+      <button class="tab-btn active" onclick="filterMenu('all', this)">Full Menu</button>
+      <button class="tab-btn" onclick="filterMenu('meals', this)">Platter Meals (2 Sides)</button>
+      <button class="tab-btn" onclick="filterMenu('meats', this)">Smoked Meats & Entrees</button>
+      <button class="tab-btn" onclick="filterMenu('sides', this)">Scratch Sides</button>
+    </div>
+
+    <div class="menu-grid" id="menuGrid">
+      <div class="menu-card" data-category="meals">
+        <div>
+          <div class="card-top"><h3 class="item-title">Smoked Ribs Platter Meal</h3><span class="item-price">$19.50</span></div>
+          <p class="item-desc">Tender St. Louis-cut pork ribs, dry-rubbed, hickory-smoked until tender. Includes two scratch sides.</p>
+        </div>
+        <div class="item-footer">
+          <span class="item-tag">Best Seller</span>
+          <button class="add-to-order-btn" onclick="addToCart('Smoked Ribs Platter Meal', 19.50)">+ Add to Order</button>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="meals">
+        <div>
+          <div class="card-top"><h3 class="item-title">Smoked Meatloaf Meal</h3><span class="item-price">$16.50</span></div>
+          <p class="item-desc">Generous slice of our signature seasoned beef and pork meatloaf with tangy glaze. Served with two sides.</p>
+        </div>
+        <div class="item-footer">
+          <span class="item-tag">Customer Favorite</span>
+          <button class="add-to-order-btn" onclick="addToCart('Smoked Meatloaf Meal', 16.50)">+ Add to Order</button>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="meals">
+        <div>
+          <div class="card-top"><h3 class="item-title">Smoked Chicken Wing Meal</h3><span class="item-price">$17.50</span></div>
+          <p class="item-desc">Award-winning dry-rubbed, pit-smoked jumbo wings with house dip. Includes 2 sides.</p>
+        </div>
+        <div class="item-footer">
+          <span class="item-tag">Wing Fest Hit</span>
+          <button class="add-to-order-btn" onclick="addToCart('Smoked Chicken Wing Meal', 17.50)">+ Add to Order</button>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="meals">
+        <div>
+          <div class="card-top"><h3 class="item-title">Smoked Turkey Leg Meal</h3><span class="item-price">$21.50</span></div>
+          <p class="item-desc">Giant fall-off-the-bone smoked turkey drumstick. Served with two sides.</p>
+        </div>
+        <div class="item-footer">
+          <span class="item-tag">Jumbo Smoked</span>
+          <button class="add-to-order-btn" onclick="addToCart('Smoked Turkey Leg Meal', 21.50)">+ Add to Order</button>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="meals">
+        <div>
+          <div class="card-top"><h3 class="item-title">Fried Catfish Platter</h3><span class="item-price">$17.50</span></div>
+          <p class="item-desc">Crisp cornmeal-crusted southern catfish fillets fried golden. Includes two sides & tartar sauce.</p>
+        </div>
+        <div class="item-footer">
+          <span class="item-tag">Crispy Golden</span>
+          <button class="add-to-order-btn" onclick="addToCart('Fried Catfish Platter', 17.50)">+ Add to Order</button>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="meals">
+        <div>
+          <div class="card-top"><h3 class="item-title">Slow Pulled Pork Meal</h3><span class="item-price">$14.50</span></div>
+          <p class="item-desc">Hand-pulled pork shoulder smoked 12+ hours over hardwood, served with house sauce and two sides.</p>
+        </div>
+        <div class="item-footer">
+          <span class="item-tag">12-Hour Hickory</span>
+          <button class="add-to-order-btn" onclick="addToCart('Slow Pulled Pork Meal', 14.50)">+ Add to Order</button>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="meats">
+        <div>
+          <div class="card-top"><h3 class="item-title">Ribs Entree (A La Carte)</h3><span class="item-price">$13.00</span></div>
+          <p class="item-desc">A hefty slab of seasoned, smoked ribs for pure barbecue lovers.</p>
+        </div>
+        <div class="item-footer">
+          <span class="item-tag">Pit Pure</span>
+          <button class="add-to-order-btn" onclick="addToCart('Ribs Entree (A La Carte)', 13.00)">+ Add to Order</button>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="meats">
+        <div>
+          <div class="card-top"><h3 class="item-title">Smoked Beef Brisket Entree</h3><span class="item-price">$12.00</span></div>
+          <p class="item-desc">Tender sliced beef brisket with peppery bark and smoke ring.</p>
+        </div>
+        <div class="item-footer">
+          <span class="item-tag">Sliced Bark</span>
+          <button class="add-to-order-btn" onclick="addToCart('Smoked Beef Brisket Entree', 12.00)">+ Add to Order</button>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="sides">
+        <div>
+          <div class="card-top"><h3 class="item-title">Slow-Cooked Collard Greens</h3><span class="item-price">$4.00</span></div>
+          <p class="item-desc">Simmered low and slow with smoked meats, herbs, and savory pot liquor.</p>
+        </div>
+        <div class="item-footer">
+          <span class="item-tag">Grandma's Soul</span>
+          <button class="add-to-order-btn" onclick="addToCart('Slow-Cooked Collard Greens', 4.00)">+ Add to Order</button>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="sides">
+        <div>
+          <div class="card-top"><h3 class="item-title">Southern Mac & Cheese</h3><span class="item-price">$4.00</span></div>
+          <p class="item-desc">Creamy macaroni baked with sharp cheddar blend and bubbly crust.</p>
+        </div>
+        <div class="item-footer">
+          <span class="item-tag">5-Cheese Blend</span>
+          <button class="add-to-order-btn" onclick="addToCart('Southern Mac & Cheese', 4.00)">+ Add to Order</button>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="sides">
+        <div>
+          <div class="card-top"><h3 class="item-title">Fried Green Tomatoes</h3><span class="item-price">$6.00</span></div>
+          <p class="item-desc">Crispy cornmeal breaded green tomatoes served with house dip.</p>
+        </div>
+        <div class="item-footer">
+          <span class="item-tag">Crisp Cornmeal</span>
+          <button class="add-to-order-btn" onclick="addToCart('Fried Green Tomatoes', 6.00)">+ Add to Order</button>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="sides">
+        <div>
+          <div class="card-top"><h3 class="item-title">Pit Baked Beans</h3><span class="item-price">$4.00</span></div>
+          <p class="item-desc">Navy beans slow cooked with brown sugar and bacon bits.</p>
+        </div>
+        <div class="item-footer">
+          <span class="item-tag">Brown Sugar & Bacon</span>
+          <button class="add-to-order-btn" onclick="addToCart('Pit Baked Beans', 4.00)">+ Add to Order</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="story">
+    <div class="story">
+      <div>
+        <span class="section-tag">Heart, Soul & Community</span>
+        <h2 class="section-title">BUILT BY FRIENDS, FOR KNOXVILLE</h2>
+        <div class="story-quote">
+          "A friend of mine said he wants to do better for people. He wanted to come out and let everybody eat like we do... When you come to Friends BBQ, you’re family."
+          <div style="margin-top: 0.6rem;">
+            <span style="font-size: 0.85rem; color: var(--text-muted); display: block;">— Brian Dickey, Pitmaster & Co-Owner</span>
+            <a href="https://www.wbir.com/article/news/local/friends-bbq-gives-back-to-the-community-feeds-less-fortunate/51-559057189" 
+               target="_blank" rel="noopener" class="story-quote-link">
+              Read the full WBIR News Channel 10 Feature Story ↗
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="story-gallery">
+        <img class="story-img tall" src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=700&q=80" alt="Barbecue cooking">
+        <img class="story-img" src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=600&q=80" alt="Pulled pork">
+        <img class="story-img" src="https://images.unsplash.com/photo-1514944298352-f41852c01991?auto=format&fit=crop&w=600&q=80" alt="Sides">
+      </div>
+    </div>
+  </section>
+
+  <section id="catering">
+    <div class="section-header">
+      <span class="section-tag">Parties • Weddings • Corporate</span>
+      <h2 class="section-title">SMOKEHOUSE EVENT CATERING</h2>
+    </div>
+
+    <div class="catering-calc">
+      <div class="calc-grid">
+        <div>
+          <div class="form-group">
+            <label class="form-label">Number of Guests</label>
+            <input type="number" id="guestCount" class="form-control" value="30" min="10" max="600" oninput="calculateCatering()">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Package Tier</label>
+            <select id="packageType" class="form-select" onchange="calculateCatering()">
+              <option value="16.50">The Cookout: 2 Meats + 2 Sides ($16.50/person)</option>
+              <option value="19.50" selected>The Feast: 3 Meats + 3 Sides + Cornbread ($19.50/person)</option>
+              <option value="24.00">The Pitmaster Grand: Ribs, Wings, Meatloaf + 4 Sides ($24.00/person)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Service Type</label>
+            <select id="serviceStyle" class="form-select" onchange="calculateCatering()">
+              <option value="0">Hot Pickup at Marble City ($0)</option>
+              <option value="35">Drop-off & Buffet Setup (+$35)</option>
+              <option value="150">On-Site Food Truck Experience (+$150)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="estimate-display">
+          <span style="font-size: 0.8rem; font-weight: 800; color: var(--amber-primary);">Estimated Catering Investment</span>
+          <div class="est-amount" id="estTotal">$620</div>
+          <p id="estPerPerson" style="color: #fff; font-weight: 700;">~$20.67 per attendee</p>
+          <div style="margin-top: 1.5rem;">
+            <a href="tel:8659364290" class="btn btn-primary" style="width: 100%;">Call (865) 936-4290 to Book</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="floating-cart-btn" onclick="toggleCartDrawer(true)">
+    <span>🛒 View Order Cart</span>
+    <span class="cart-count-badge" id="floatingCartBadge">0</span>
+    <span id="floatingCartTotal" style="margin-left: 0.3rem; color: #ffeb3b;">$0.00</span>
+  </div>
+
+  <div class="cart-drawer-overlay" id="cartOverlay" onclick="toggleCartDrawer(false)"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="drawer-header">
+      <h3 class="drawer-title">Your BBQ Order</h3>
+      <button class="close-drawer" onclick="toggleCartDrawer(false)">✕</button>
+    </div>
+    <div class="drawer-body" id="cartItemsList">
+      <div class="cart-empty" id="emptyCartMsg">
+        <p style="font-size: 2.5rem; margin-bottom: 0.5rem;">🍗</p>
+        <p style="font-weight: 700; color: #fff;">Your order is empty</p>
+      </div>
+    </div>
+    <div class="drawer-footer" id="cartSummarySection" style="display: none;">
+      <div class="summary-line"><span>Subtotal</span><span id="cartSubtotal">$0.00</span></div>
+      <div class="summary-line"><span>Tax (9.25%)</span><span id="cartTax">$0.00</span></div>
+      <div class="summary-line total"><span>Total</span><span id="cartGrandTotal">$0.00</span></div>
+      <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="openCheckoutModal()">
+        Proceed to Call-In / Pickup →
+      </button>
+    </div>
+  </aside>
+
+  <div class="checkout-modal-overlay" id="checkoutModal">
+    <div class="checkout-modal">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <h3 style="font-size: 1.6rem; color: #fff;">Call in Your Order</h3>
+        <button onclick="closeCheckoutModal()" style="background: none; border: none; color: #fff; font-size: 1.4rem; cursor: pointer;">✕</button>
+      </div>
+      <p style="margin-bottom: 1.2rem; font-size: 0.9rem;">Your items are saved. Click below to instantly connect with Friends BBQ to confirm pickup time!</p>
+      <a href="tel:8659364290" class="btn btn-primary" style="width: 100%;">📞 Call (865) 936-4290</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div style="font-size: 1.6rem; font-family: var(--font-display); color: #fff; margin-bottom: 0.5rem;">🔥 FRIENDS BBQ</div>
+        <p style="font-size: 0.9rem;">Knoxville native soul food and authentic hardwood pit barbecue.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Locations</h4>
+        <ul>
+          <li>Marble City Market (333 W Depot Ave)</li>
+          <li>Magnolia Pit Stand (2580 E Magnolia)</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Links</h4>
+        <ul>
+          <li><a href="https://www.facebook.com/FriendsBBQ/" target="_blank">Facebook Page</a></li>
+          <li><a href="https://www.marblecitymarket.com/our-vendors/friends-bbq/" target="_blank">Marble City Vendor Tab</a></li>
+          <li><a href="https://www.wbir.com/article/news/local/friends-bbq-gives-back-to-the-community-feeds-less-fortunate/51-559057189" target="_blank">WBIR News Feature</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinks = document.getElementById('navLinks');
+    mobileToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+
+    function filterMenu(cat, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.menu-card').forEach(c => {
+        c.style.display = (cat === 'all' || c.getAttribute('data-category') === cat) ? 'flex' : 'none';
+      });
+    }
+
+    let cart = [];
+    function addToCart(title, price) {
+      const item = cart.find(i => i.title === title);
+      if (item) item.qty += 1;
+      else cart.push({ title, price, qty: 1 });
+      renderCart();
+      toggleCartDrawer(true);
+    }
+
+    function toggleCartDrawer(open) {
+      document.getElementById('cartDrawer').classList.toggle('active', open);
+      document.getElementById('cartOverlay').classList.toggle('active', open);
+    }
+
+    function renderCart() {
+      const list = document.getElementById('cartItemsList');
+      const summary = document.getElementById('cartSummarySection');
+      const emptyMsg = document.getElementById('emptyCartMsg');
+      const totalCount = cart.reduce((s, i) => s + i.qty, 0);
+      const subtotal = cart.reduce((s, i) => s + (i.price * i.qty), 0);
+      const tax = subtotal * 0.0925;
+      const total = subtotal + tax;
+
+      document.getElementById('navCartBadge').textContent = totalCount;
+      document.getElementById('floatingCartBadge').textContent = totalCount;
+      document.getElementById('floatingCartTotal').textContent = '$' + total.toFixed(2);
+
+      if (cart.length === 0) {
+        emptyMsg.style.display = 'block';
+        summary.style.display = 'none';
+        list.querySelectorAll('.cart-item').forEach(el => el.remove());
+        return;
+      }
+
+      emptyMsg.style.display = 'none';
+      summary.style.display = 'block';
+
+      let html = '';
+      cart.forEach((item, idx) => {
+        html += `
+          <div class="cart-item">
+            <div>
+              <div class="cart-item-title">${item.title}</div>
+              <div class="cart-item-price">$${(item.price * item.qty).toFixed(2)}</div>
+            </div>
+            <div>Qty: ${item.qty}</div>
+          </div>
+        `;
+      });
+      list.innerHTML = html;
+      document.getElementById('cartSubtotal').textContent = '$' + subtotal.toFixed(2);
+      document.getElementById('cartTax').textContent = '$' + tax.toFixed(2);
+      document.getElementById('cartGrandTotal').textContent = '$' + total.toFixed(2);
+    }
+
+    function openCheckoutModal() {
+      toggleCartDrawer(false);
+      document.getElementById('checkoutModal').classList.add('active');
+    }
+    function closeCheckoutModal() {
+      document.getElementById('checkoutModal').classList.remove('active');
+    }
+
+    function calculateCatering() {
+      const guests = parseInt(document.getElementById('guestCount').value) || 0;
+      const price = parseFloat(document.getElementById('packageType').value);
+      const fee = parseFloat(document.getElementById('serviceStyle').value);
+      const total = (guests * price) + fee;
+      document.getElementById('estTotal').textContent = '$' + Math.round(total).toLocaleString();
+      document.getElementById('estPerPerson').textContent = '~$' + (guests > 0 ? (total/guests).toFixed(2) : 0) + ' per attendee';
+    }
+    calculateCatering();
+  </script>
+</body>
+</html>
