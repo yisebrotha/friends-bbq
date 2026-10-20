@@ -8,7 +8,7 @@
   <meta name="description" content="Order authentic Knoxville soul food and hardwood-smoked barbecue from Friends BBQ. Hickory ribs, smoked meatloaf, wings, collard greens & mac at Marble City Market & Magnolia Ave.">
   <meta property="og:title" content="Friends BBQ | Knoxville's Soul Smokehouse">
   <meta property="og:description" content="Authentic wood-smoked ribs, wings, turkey legs, meatloaf, and homemade sides in Knoxville, TN. Order pickup or book catering.">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80">
+  <meta property="og:image" content="logo.png">
   <meta property="og:url" content="https://www.facebook.com/FriendsBBQ/">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -80,10 +80,17 @@
       align-items: center; padding: 1rem 1.5rem;
     }
     .brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
-    .brand-flame {
-      width: 36px; height: 36px; background: linear-gradient(135deg, var(--amber-primary), var(--gold-accent));
-      border-radius: 8px; display: grid; place-items: center; color: #fff; font-size: 1.25rem;
+    
+    /* OFFICIAL LOGO STYLING */
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      object-fit: cover;
+      display: block;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     }
+
     .brand-title { font-size: 1.9rem; color: #fff; line-height: 1; }
     .brand-subtitle { display: block; font-size: 0.65rem; color: var(--gold-accent); letter-spacing: 0.2em; font-weight: 700; }
     .nav-links { display: flex; align-items: center; gap: 1.6rem; list-style: none; }
@@ -261,10 +268,12 @@
 </head>
 <body>
 
+  <!-- HEADER -->
   <header class="header">
     <div class="navbar">
       <a href="#" class="brand">
-        <div class="brand-flame">🔥</div>
+        <!-- OFFICIAL LOGO -->
+        <img src="logo.png" alt="Friends BBQ Logo" class="brand-logo">
         <div>
           <span class="brand-title">FRIENDS BBQ</span>
           <span class="brand-subtitle">KNOXVILLE, TN • SOUL SMOKEHOUSE</span>
@@ -291,6 +300,7 @@
     </div>
   </header>
 
+  <!-- LIVE STATUS -->
   <div class="status-strip">
     <div class="status-inner">
       <div class="status-pill">
@@ -306,6 +316,7 @@
     </div>
   </div>
 
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
       <div class="hero-badge">🪵 Hardwood Hickory Smoked • Soul Food</div>
@@ -322,7 +333,7 @@
 
       <div class="hero-highlights">
         <div><div class="stat-num">100%</div><div class="stat-label">Hardwood Smoked</div></div>
-        <div><div class="stat-num"><div><div class="stat-num">10+ YRS</div><div class="stat-label">Smoking for Knox</div></div></div><div class="stat-label">Smoking for Knox</div></div>
+        <div><div class="stat-num">10+ YRS</div><div class="stat-label">Smoking for Knox</div></div>
         <div><div class="stat-num">14-HR</div><div class="stat-label">Slow Pit Perfection</div></div>
       </div>
     </div>
@@ -341,6 +352,7 @@
     </div>
   </section>
 
+  <!-- LOCATIONS -->
   <section id="locations" style="padding-top: 2rem;">
     <div class="section-header">
       <span class="section-tag">Where To Find Us</span>
@@ -373,7 +385,7 @@
           <ul class="location-details">
             <li><span class="location-icon">📍</span><span>2580 E Magnolia Ave, Knoxville, TN 37914</span></li>
             <li><span class="location-icon">⏰</span><span>Thursday – Saturday: 11:00 AM – Sold Out</span></li>
-            <li><span class="location-icon">🔥</span><span>Outdoor Grilling & Community Service Events</span></li>
+            <li><span class="location-icon">🪵</span><span>Outdoor Grilling & Community Service Events</span></li>
           </ul>
         </div>
         <div class="location-btn-group">
@@ -384,6 +396,7 @@
     </div>
   </section>
 
+  <!-- MENU -->
   <section id="menu">
     <div class="section-header">
       <span class="section-tag">Cooked Low & Slow</span>
@@ -533,6 +546,7 @@
     </div>
   </section>
 
+  <!-- STORY -->
   <section id="story">
     <div class="story">
       <div>
@@ -558,6 +572,7 @@
     </div>
   </section>
 
+  <!-- CATERING -->
   <section id="catering">
     <div class="section-header">
       <span class="section-tag">Parties • Weddings • Corporate</span>
@@ -601,12 +616,48 @@
     </div>
   </section>
 
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <div class="section-header">
+      <span class="section-tag">Real Knoxville Diners</span>
+      <h2 class="section-title">WHAT FRIENDS ARE SAYING</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-body">"Some of the best food I have ever eaten in my entire life. I moved up to D.C. and I miss Friends BBQ so much... If you're anywhere in Knoxville, it is 100% worth every mile!"</p>
+        <div class="review-author">
+          <div class="author-avatar">M</div>
+          <div class="author-info"><h4>Marcus T.</h4><span>Google Review • Verified Customer</span></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-body">"Friends BBQ was grilling their amazing ribs, chicken and that smoked meatloaf on Magnolia. Unbelievable tenderness and genuine hospitality."</p>
+        <div class="review-author">
+          <div class="author-avatar">D</div>
+          <div class="author-info"><h4>David R.</h4><span>Knoxville Local • Magnolia regular</span></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-body">"Extremely good pulled pork and greens. Tasted like it had been seasoned and brined with love. These folks do soul food right."</p>
+        <div class="review-author">
+          <div class="author-avatar">C</div>
+          <div class="author-info"><h4>Carl W.</h4><span>Marble City Market Diner</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CART FLOATING BUTTON -->
   <div class="floating-cart-btn" onclick="toggleCartDrawer(true)">
     <span>🛒 View Order Cart</span>
     <span class="cart-count-badge" id="floatingCartBadge">0</span>
     <span id="floatingCartTotal" style="margin-left: 0.3rem; color: #ffeb3b;">$0.00</span>
   </div>
 
+  <!-- CART SLIDE-OUT -->
   <div class="cart-drawer-overlay" id="cartOverlay" onclick="toggleCartDrawer(false)"></div>
   <aside class="cart-drawer" id="cartDrawer">
     <div class="drawer-header">
@@ -629,6 +680,7 @@
     </div>
   </aside>
 
+  <!-- MODAL -->
   <div class="checkout-modal-overlay" id="checkoutModal">
     <div class="checkout-modal">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
@@ -640,10 +692,17 @@
     </div>
   </div>
 
+  <!-- FOOTER -->
   <footer>
     <div class="footer-grid">
       <div class="footer-col">
-        <div style="font-size: 1.6rem; font-family: var(--font-display); color: #fff; margin-bottom: 0.5rem;">🔥 FRIENDS BBQ</div>
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.8rem;">
+          <img src="logo.png" alt="Friends BBQ Logo" class="brand-logo">
+          <div>
+            <span class="brand-title" style="font-size: 1.6rem;">FRIENDS BBQ</span>
+            <span class="brand-subtitle">KNOXVILLE, TN</span>
+          </div>
+        </div>
         <p style="font-size: 0.9rem;">Knoxville native soul food and authentic hardwood pit barbecue.</p>
       </div>
       <div class="footer-col">
