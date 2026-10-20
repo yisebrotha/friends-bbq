@@ -271,4 +271,695 @@
     .cart-drawer.active { right: 0; }
     .drawer-header { padding: 1.5rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
     .drawer-title { font-size: 1.8rem; color: #fff; }
-    .close-drawer { background: none; border: none; color: var(--text-muted); font-size: 1.6rem; cursor: poi
+    .close-drawer { background: none; border: none; color: var(--text-muted); font-size: 1.6rem; cursor: pointer; }
+    .drawer-body { flex: 1; overflow-y: auto; padding: 1.2rem; }
+    .cart-empty { text-align: center; padding: 3rem 1rem; color: var(--text-dim); }
+
+    /* CART ITEM ROWS */
+    .cart-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .cart-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    .cart-item-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+    }
+    .cart-item-subtext {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      margin-top: 0.2rem;
+    }
+    .cart-item-price {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--gold-accent);
+      white-space: nowrap;
+    }
+    .cart-item-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.2rem;
+    }
+    .qty-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.2rem 0.4rem;
+    }
+    .qty-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: #fff;
+      width: 28px;
+      height: 28px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+      font-weight: 800;
+      transition: background 0.15s;
+    }
+    .qty-btn:hover {
+      background: var(--amber-primary);
+      border-color: var(--amber-primary);
+    }
+    .qty-value {
+      font-weight: 800;
+      min-width: 24px;
+      text-align: center;
+      color: #fff;
+      font-size: 0.95rem;
+    }
+    .btn-remove-item {
+      background: transparent;
+      border: none;
+      color: #ff6b6b;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.35rem 0.6rem;
+      border-radius: 4px;
+      transition: background 0.15s;
+    }
+    .btn-remove-item:hover {
+      background: rgba(255, 107, 107, 0.15);
+      color: #ff8787;
+    }
+
+    .drawer-footer { padding: 1.5rem; border-top: 1px solid var(--border); background: var(--bg-card); }
+    .summary-line { display: flex; justify-content: space-between; font-size: 0.92rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+    .summary-line.total { font-size: 1.3rem; font-weight: 800; color: #fff; border-top: 1px dashed var(--border); padding-top: 0.75rem; }
+
+    .btn-continue-shopping {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      width: 100%;
+      margin-top: 0.6rem;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius);
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: all 0.2s;
+    }
+    .btn-continue-shopping:hover {
+      color: #fff;
+      border-color: var(--gold-accent);
+      background: rgba(245, 159, 0, 0.08);
+    }
+
+    .checkout-modal-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85); z-index: 3000; display: none; place-items: center; padding: 1.5rem; }
+    .checkout-modal-overlay.active { display: grid; }
+    .checkout-modal { background: var(--bg-surface); border: 1px solid var(--border-accent); border-radius: 14px; max-width: 500px; width: 100%; padding: 2.2rem; }
+
+    /* FOOTER */
+    footer { background: #090807; border-top: 1px solid var(--border); padding: 5rem 1.5rem 2.5rem; }
+    .footer-grid { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3.5rem; }
+    .footer-col h4 { font-size: 1.25rem; color: #fff; margin-bottom: 1.3rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+    .footer-col a { color: var(--text-muted); text-decoration: none; font-size: 0.92rem; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--amber-primary); }
+    .bottom-bar { max-width: 1240px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.06); font-size: 0.82rem; color: var(--text-dim); }
+
+    @media (max-width: 992px) {
+      .hero, .story, .calc-grid { grid-template-columns: 1fr; text-align: center; }
+      .floating-ribbon { left: 50%; transform: translateX(-50%); bottom: -25px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-toggle { display: block; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="navbar">
+      <a href="#" class="brand">
+        <img src="logo.png" alt="Friends BBQ Logo" class="brand-logo">
+        <div>
+          <span class="brand-title">FRIENDS BBQ</span>
+          <span class="brand-subtitle">KNOXVILLE, TN • SOUL SMOKEHOUSE</span>
+        </div>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#locations">Locations</a></li>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#catering">Catering</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="tel:8659364290" class="btn btn-outline btn-sm">📞 (865) 936-4290</a></li>
+        <!-- PRIMARY CART BUTTON REPLACING FACEBOOK -->
+        <li>
+          <button class="nav-cart-btn" onclick="toggleCartDrawer(true)">
+            🛒 <span>Cart</span>
+            <span class="cart-count-badge" id="navCartBadge">0</span>
+          </button>
+        </li>
+      </ul>
+
+      <button class="mobile-toggle" id="mobileToggle">☰</button>
+    </div>
+  </header>
+
+  <!-- LIVE STATUS -->
+  <div class="status-strip">
+    <div class="status-inner">
+      <div class="status-pill">
+        <span class="pulse-dot"></span>
+        <span><strong>Smokers Hot & Rolling:</strong> Magnolia Stand & Marble City Market</span>
+      </div>
+      <div class="status-pill" style="color: var(--gold-accent);">
+        <span>⭐ East Knoxville's Smoked Meatloaf & Tender Ribs</span>
+      </div>
+      <div>
+        <a href="#locations" style="color: var(--text-muted); text-decoration: none; font-size: 0.85rem; font-weight: 700;">View Hours →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">🪵 Hardwood Hickory Smoked • Soul Food</div>
+      <h1 class="hero-title">WE BRING <span class="glow">SOUL</span> TO SOUL FOOD.</h1>
+      <p class="hero-lead">
+        Locally owned Knoxville native craft. Every bite of our tender ribs, hickory smoked meatloaf, crispy catfish, and five-cheese mac will send you straight down memory lane.
+      </p>
+      
+      <div class="hero-actions">
+        <a href="#menu" class="btn btn-primary">Start Online Order</a>
+        <a href="#catering" class="btn btn-outline">Book Event Catering</a>
+        <a href="https://www.marblecitymarket.com/our-vendors/friends-bbq/" target="_blank" rel="noopener" class="btn btn-outline">Marble City Vendor Stall ↗</a>
+      </div>
+
+      <div class="hero-highlights">
+        <div><div class="stat-num">100%</div><div class="stat-label">Hardwood Smoked</div></div>
+        <div><div class="stat-num">10+ YRS</div><div class="stat-label">Smoking for Knox</div></div>
+        <div><div class="stat-num">14-HR</div><div class="stat-label">Slow Pit Perfection</div></div>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hero-card-img-wrap">
+        <img class="hero-card-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80" alt="Smoked barbecue ribs on pit">
+      </div>
+      <div class="floating-ribbon">
+        <div class="icon-box">🍖</div>
+        <div>
+          <strong style="color: #fff; font-size: 0.95rem; display: block;">Pitmaster Specialty</strong>
+          <span style="font-size: 0.8rem; color: var(--text-muted);">Smoked Meatloaf & Turkey Legs</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATIONS -->
+  <section id="locations" style="padding-top: 2rem;">
+    <div class="section-header">
+      <span class="section-tag">Where To Find Us</span>
+      <h2 class="section-title">TWO WAYS TO GET YOUR FIX</h2>
+    </div>
+
+    <div class="locations-grid">
+      <div class="location-box">
+        <div>
+          <span class="location-badge">Downtown Food Hall</span>
+          <h3 class="location-name">Marble City Market Stall</h3>
+          <p>Full dining hall, craft bar drinks, outdoor patio seating, and takeout pickups.</p>
+          <ul class="location-details">
+            <li><span class="location-icon">📍</span><span>333 W Depot Ave, Suite 110, Knoxville, TN 37917</span></li>
+            <li><span class="location-icon">⏰</span><span>Sun–Thu: 11:00 AM – 9:00 PM<br>Fri–Sat: 11:00 AM – 10:00 PM</span></li>
+            <li><span class="location-icon">📞</span><span>Call for Pickup: (865) 936-4290</span></li>
+          </ul>
+        </div>
+        <div class="location-btn-group">
+          <a href="https://www.marblecitymarket.com/our-vendors/friends-bbq/" target="_blank" rel="noopener" class="btn btn-primary" style="width: 100%;">View Marble City Market Stall Profile ↗</a>
+          <a href="https://maps.google.com/?q=333+W+Depot+Ave+Knoxville+TN" target="_blank" rel="noopener" class="btn btn-outline" style="width: 100%;">Get Directions</a>
+        </div>
+      </div>
+
+      <div class="location-box">
+        <div>
+          <span class="location-badge">East Knox Smoker Stand</span>
+          <h3 class="location-name">Magnolia Food Stand</h3>
+          <p>The outdoor hardwood smoker pit. Ribs, chicken, hot dogs, and sides to go.</p>
+          <ul class="location-details">
+            <li><span class="location-icon">📍</span><span>2580 E Magnolia Ave, Knoxville, TN 37914</span></li>
+            <li><span class="location-icon">⏰</span><span>Thursday – Saturday: 11:00 AM – Sold Out</span></li>
+            <li><span class="location-icon">🪵</span><span>Outdoor Grilling & Community Service Events</span></li>
+          </ul>
+        </div>
+        <div class="location-btn-group">
+          <a href="https://www.facebook.com/FriendsBBQ/" target="_blank" rel="noopener" class="btn btn-primary" style="width: 100%;">Check Magnolia Smoke Schedule</a>
+          <a href="https://maps.google.com/?q=2580+E+Magnolia+Ave+Knoxville+TN" target="_blank" rel="noopener" class="btn btn-outline" style="width: 100%;">Get Directions</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu">
+    <div class="section-header">
+      <span class="section-tag">Cooked Low & Slow</span>
+      <h2 class="section-title">THE SOUL FOOD BBQ MENU</h2>
+      <p>Click <strong>"+ Add to Order"</strong> on any item to build your takeout spread.</p>
+    </div>
+
+    <div class="menu-tabs">
+      <button class="tab-btn active" onclick="filterMenu('all', this)">Full Menu</button>
+      <button class="tab-btn" onclick="filterMenu('meals', this)">Platter Meals (2 Sides)</button>
+      <button class="tab-btn" onclick="filterMenu('meats', this)">Smoked Meats & Entrees</button>
+      <button class="tab-btn" onclick="filterMenu('sides', this)">Scratch Sides</button>
+    </div>
+
+    <div class="menu-grid" id="menuGrid">
+      <div class="menu-card" data-category="meals">
+        <div>
+          <div class="card-top"><h3 class="item-title">Smoked Ribs Platter Meal</h3><span class="item-price">$19.50</span></div>
+          <p class="item-desc">Tender St. Louis-cut pork ribs, dry-rubbed, hickory-smoked until tender. Includes two scratch sides.</p>
+        </div>
+        <div class="item-footer">
+          <span class="item-tag">Best Seller</span>
+          <button class="add-to-order-btn" onclick="addToCart('Smoked Ribs Platter Meal', 19.50)">+ Add to Order</button>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="meals">
+        <div>
+          <div class="card-top"><h3 class="item-title">Smoked Meatloaf Meal</h3><span class="item-price">$16.50</span></div>
+          <p class="item-desc">Generous slice of our signature seasoned beef and pork meatloaf with tangy glaze. Served with two sides.</p>
+        </div>
+        <div class="item-footer">
+          <span class="item-tag">Customer Favorite</span>
+          <button class="add-to-order-btn" onclick="addToCart('Smoked Meatloaf Meal', 16.50)">+ Add to Order</button>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="meals">
+        <div>
+          <div class="card-top"><h3 class="item-title">Smoked Chicken Wing Meal</h3><span class="item-price">$17.50</span></div>
+          <p class="item-desc">Award-winning dry-rubbed, pit-smoked jumbo wings with house dip. Includes 2 sides.</p>
+        </div>
+        <div class="item-footer">
+          <span class="item-tag">Wing Fest Hit</span>
+          <button class="add-to-order-btn" onclick="addToCart('Smoked Chicken Wing Meal', 17.50)">+ Add to Order</button>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="meals">
+        <div>
+          <div class="card-top"><h3 class="item-title">Smoked Turkey Leg Meal</h3><span class="item-price">$21.50</span></div>
+          <p class="item-desc">Giant fall-off-the-bone smoked turkey drumstick. Served with two sides.</p>
+        </div>
+        <div class="item-footer">
+          <span class="item-tag">Jumbo Smoked</span>
+          <button class="add-to-order-btn" onclick="addToCart('Smoked Turkey Leg Meal', 21.50)">+ Add to Order</button>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="meals">
+        <div>
+          <div class="card-top"><h3 class="item-title">Fried Catfish Platter</h3><span class="item-price">$17.50</span></div>
+          <p class="item-desc">Crisp cornmeal-crusted southern catfish fillets fried golden. Includes two sides & tartar sauce.</p>
+        </div>
+        <div class="item-footer">
+          <span class="item-tag">Crispy Golden</span>
+          <button class="add-to-order-btn" onclick="addToCart('Fried Catfish Platter', 17.50)">+ Add to Order</button>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="meals">
+        <div>
+          <div class="card-top"><h3 class="item-title">Slow Pulled Pork Meal</h3><span class="item-price">$14.50</span></div>
+          <p class="item-desc">Hand-pulled pork shoulder smoked 12+ hours over hardwood, served with house sauce and two sides.</p>
+        </div>
+        <div class="item-footer">
+          <span class="item-tag">12-Hour Hickory</span>
+          <button class="add-to-order-btn" onclick="addToCart('Slow Pulled Pork Meal', 14.50)">+ Add to Order</button>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="meats">
+        <div>
+          <div class="card-top"><h3 class="item-title">Ribs Entree (A La Carte)</h3><span class="item-price">$13.00</span></div>
+          <p class="item-desc">A hefty slab of seasoned, smoked ribs for pure barbecue lovers.</p>
+        </div>
+        <div class="item-footer">
+          <span class="item-tag">Pit Pure</span>
+          <button class="add-to-order-btn" onclick="addToCart('Ribs Entree (A La Carte)', 13.00)">+ Add to Order</button>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="meats">
+        <div>
+          <div class="card-top"><h3 class="item-title">Smoked Beef Brisket Entree</h3><span class="item-price">$12.00</span></div>
+          <p class="item-desc">Tender sliced beef brisket with peppery bark and smoke ring.</p>
+        </div>
+        <div class="item-footer">
+          <span class="item-tag">Sliced Bark</span>
+          <button class="add-to-order-btn" onclick="addToCart('Smoked Beef Brisket Entree', 12.00)">+ Add to Order</button>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="sides">
+        <div>
+          <div class="card-top"><h3 class="item-title">Slow-Cooked Collard Greens</h3><span class="item-price">$4.00</span></div>
+          <p class="item-desc">Simmered low and slow with smoked meats, herbs, and savory pot liquor.</p>
+        </div>
+        <div class="item-footer">
+          <span class="item-tag">Grandma's Soul</span>
+          <button class="add-to-order-btn" onclick="addToCart('Slow-Cooked Collard Greens', 4.00)">+ Add to Order</button>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="sides">
+        <div>
+          <div class="card-top"><h3 class="item-title">Southern Mac & Cheese</h3><span class="item-price">$4.00</span></div>
+          <p class="item-desc">Creamy macaroni baked with sharp cheddar blend and bubbly crust.</p>
+        </div>
+        <div class="item-footer">
+          <span class="item-tag">5-Cheese Blend</span>
+          <button class="add-to-order-btn" onclick="addToCart('Southern Mac & Cheese', 4.00)">+ Add to Order</button>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="sides">
+        <div>
+          <div class="card-top"><h3 class="item-title">Fried Green Tomatoes</h3><span class="item-price">$6.00</span></div>
+          <p class="item-desc">Crispy cornmeal breaded green tomatoes served with house dip.</p>
+        </div>
+        <div class="item-footer">
+          <span class="item-tag">Crisp Cornmeal</span>
+          <button class="add-to-order-btn" onclick="addToCart('Fried Green Tomatoes', 6.00)">+ Add to Order</button>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="sides">
+        <div>
+          <div class="card-top"><h3 class="item-title">Pit Baked Beans</h3><span class="item-price">$4.00</span></div>
+          <p class="item-desc">Navy beans slow cooked with brown sugar and bacon bits.</p>
+        </div>
+        <div class="item-footer">
+          <span class="item-tag">Brown Sugar & Bacon</span>
+          <button class="add-to-order-btn" onclick="addToCart('Pit Baked Beans', 4.00)">+ Add to Order</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section id="story">
+    <div class="story">
+      <div>
+        <span class="section-tag">Heart, Soul & Community</span>
+        <h2 class="section-title">BUILT BY FRIENDS, FOR KNOXVILLE</h2>
+        <div class="story-quote">
+          "A friend of mine said he wants to do better for people. He wanted to come out and let everybody eat like we do... When you come to Friends BBQ, you’re family."
+          <div style="margin-top: 0.6rem;">
+            <span style="font-size: 0.85rem; color: var(--text-muted); display: block;">— Brian Dickey, Pitmaster & Co-Owner</span>
+            <a href="https://www.wbir.com/article/news/local/friends-bbq-gives-back-to-the-community-feeds-less-fortunate/51-559057189" 
+               target="_blank" rel="noopener" class="story-quote-link">
+              Read the full WBIR News Channel 10 Feature Story ↗
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="story-gallery">
+        <img class="story-img tall" src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=700&q=80" alt="Barbecue cooking">
+        <img class="story-img" src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=600&q=80" alt="Pulled pork">
+        <img class="story-img" src="https://images.unsplash.com/photo-1514944298352-f41852c01991?auto=format&fit=crop&w=600&q=80" alt="Sides">
+      </div>
+    </div>
+  </section>
+
+  <!-- CATERING -->
+  <section id="catering">
+    <div class="section-header">
+      <span class="section-tag">Parties • Weddings • Corporate</span>
+      <h2 class="section-title">SMOKEHOUSE EVENT CATERING</h2>
+    </div>
+
+    <div class="catering-calc">
+      <div class="calc-grid">
+        <div>
+          <div class="form-group">
+            <label class="form-label">Number of Guests</label>
+            <input type="number" id="guestCount" class="form-control" value="30" min="10" max="600" oninput="calculateCatering()">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Package Tier</label>
+            <select id="packageType" class="form-select" onchange="calculateCatering()">
+              <option value="16.50">The Cookout: 2 Meats + 2 Sides ($16.50/person)</option>
+              <option value="19.50" selected>The Feast: 3 Meats + 3 Sides + Cornbread ($19.50/person)</option>
+              <option value="24.00">The Pitmaster Grand: Ribs, Wings, Meatloaf + 4 Sides ($24.00/person)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Service Type</label>
+            <select id="serviceStyle" class="form-select" onchange="calculateCatering()">
+              <option value="0">Hot Pickup at Marble City ($0)</option>
+              <option value="35">Drop-off & Buffet Setup (+$35)</option>
+              <option value="150">On-Site Food Truck Experience (+$150)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="estimate-display">
+          <span style="font-size: 0.8rem; font-weight: 800; color: var(--amber-primary);">Estimated Catering Investment</span>
+          <div class="est-amount" id="estTotal">$620</div>
+          <p id="estPerPerson" style="color: #fff; font-weight: 700;">~$20.67 per attendee</p>
+          <div style="margin-top: 1.5rem;">
+            <a href="tel:8659364290" class="btn btn-primary" style="width: 100%;">Call (865) 936-4290 to Book</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <div class="section-header">
+      <span class="section-tag">Real Knoxville Diners</span>
+      <h2 class="section-title">WHAT FRIENDS ARE SAYING</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-body">"Some of the best food I have ever eaten in my entire life. I moved up to D.C. and I miss Friends BBQ so much... If you're anywhere in Knoxville, it is 100% worth every mile!"</p>
+        <div class="review-author">
+          <div class="author-avatar">M</div>
+          <div class="author-info"><h4>Marcus T.</h4><span>Google Review • Verified Customer</span></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-body">"Friends BBQ was grilling their amazing ribs, chicken and that smoked meatloaf on Magnolia. Unbelievable tenderness and genuine hospitality."</p>
+        <div class="review-author">
+          <div class="author-avatar">D</div>
+          <div class="author-info"><h4>David R.</h4><span>Knoxville Local • Magnolia regular</span></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-body">"Extremely good pulled pork and greens. Tasted like it had been seasoned and brined with love. These folks do soul food right."</p>
+        <div class="review-author">
+          <div class="author-avatar">C</div>
+          <div class="author-info"><h4>Carl W.</h4><span>Marble City Market Diner</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLOATING CART BUTTON -->
+  <div class="floating-cart-btn" onclick="toggleCartDrawer(true)">
+    <span>🛒 View Order Cart</span>
+    <span class="cart-count-badge" id="floatingCartBadge">0</span>
+    <span id="floatingCartTotal" style="margin-left: 0.3rem; color: #ffeb3b;">$0.00</span>
+  </div>
+
+  <!-- SLIDE-OUT CART DRAWER -->
+  <div class="cart-drawer-overlay" id="cartOverlay" onclick="toggleCartDrawer(false)"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="drawer-header">
+      <h3 class="drawer-title">Your BBQ Order</h3>
+      <button class="close-drawer" onclick="toggleCartDrawer(false)" aria-label="Close cart">✕</button>
+    </div>
+
+    <div class="drawer-body">
+      <div class="cart-empty" id="emptyCartMsg">
+        <p style="font-size: 2.5rem; margin-bottom: 0.5rem;">🍗</p>
+        <p style="font-weight: 700; color: #fff; margin-bottom: 0.3rem;">Your order is empty</p>
+        <p style="font-size: 0.85rem; color: var(--text-dim);">Click "+ Add to Order" on any menu item to start building your meal.</p>
+      </div>
+
+      <div id="cartItemsContainer"></div>
+    </div>
+
+    <div class="drawer-footer" id="cartSummarySection" style="display: none;">
+      <div class="summary-line"><span>Subtotal</span><span id="cartSubtotal">$0.00</span></div>
+      <div class="summary-line"><span>Tax (9.25%)</span><span id="cartTax">$0.00</span></div>
+      <div class="summary-line total"><span>Total</span><span id="cartGrandTotal">$0.00</span></div>
+      
+      <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="openCheckoutModal()">
+        Proceed to Call-In / Pickup →
+      </button>
+
+      <button class="btn-continue-shopping" onclick="toggleCartDrawer(false)">
+        ← Back to Menu (Continue Ordering)
+      </button>
+    </div>
+  </aside>
+
+  <!-- MODAL -->
+  <div class="checkout-modal-overlay" id="checkoutModal">
+    <div class="checkout-modal">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <h3 style="font-size: 1.6rem; color: #fff;">Call in Your Order</h3>
+        <button onclick="closeCheckoutModal()" style="background: none; border: none; color: #fff; font-size: 1.4rem; cursor: pointer;">✕</button>
+      </div>
+      <p style="margin-bottom: 1.2rem; font-size: 0.9rem;">Your items are saved. Click below to instantly connect with Friends BBQ to confirm pickup time!</p>
+      <a href="tel:8659364290" class="btn btn-primary" style="width: 100%; margin-bottom: 0.6rem;">📞 Call (865) 936-4290</a>
+      <button class="btn-continue-shopping" onclick="closeCheckoutModal()">Close Window</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.8rem;">
+          <img src="logo.png" alt="Friends BBQ Logo" class="brand-logo">
+          <div>
+            <span class="brand-title" style="font-size: 1.6rem;">FRIENDS BBQ</span>
+            <span class="brand-subtitle">KNOXVILLE, TN</span>
+          </div>
+        </div>
+        <p style="font-size: 0.9rem;">Knoxville native soul food and authentic hardwood pit barbecue.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Locations</h4>
+        <ul>
+          <li>Marble City Market (333 W Depot Ave)</li>
+          <li>Magnolia Pit Stand (2580 E Magnolia)</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Links</h4>
+        <ul>
+          <li><a href="https://www.facebook.com/FriendsBBQ/" target="_blank" rel="noopener">Facebook Page</a></li>
+          <!-- ADDED INSTAGRAM PROFILE LINK -->
+          <li><a href="https://www.instagram.com/llcfriendsbbq/" target="_blank" rel="noopener">Instagram (@llcfriendsbbq)</a></li>
+          <li><a href="https://www.marblecitymarket.com/our-vendors/friends-bbq/" target="_blank" rel="noopener">Marble City Vendor Tab</a></li>
+          <li><a href="https://www.wbir.com/article/news/local/friends-bbq-gives-back-to-the-community-feeds-less-fortunate/51-559057189" target="_blank" rel="noopener">WBIR News Feature</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinks = document.getElementById('navLinks');
+    mobileToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+
+    function filterMenu(cat, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.menu-card').forEach(c => {
+        c.style.display = (cat === 'all' || c.getAttribute('data-category') === cat) ? 'flex' : 'none';
+      });
+    }
+
+    let cart = [];
+
+    function addToCart(title, price) {
+      const existing = cart.find(i => i.title === title);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ title, price: parseFloat(price), qty: 1 });
+      }
+      renderCart();
+      toggleCartDrawer(true);
+    }
+
+    function updateQty(index, delta) {
+      if (cart[index]) {
+        cart[index].qty += delta;
+        if (cart[index].qty <= 0) {
+          removeFromCart(index);
+          return;
+        }
+      }
+      renderCart();
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      renderCart();
+    }
+
+    function toggleCartDrawer(open) {
+      document.getElementById('cartDrawer').classList.toggle('active', open);
+      document.getElementById('cartOverlay').classList.toggle('active', open);
+    }
+
+    function renderCart() {
+      const container = document.getElementById('cartItemsContainer');
+      const emptyMsg = document.getElementById('emptyCartMsg');
+      const summarySection = document.getElementById('cartSummarySection');
+
+      const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      const tax = subtotal * 0.0925;
+      const grandTotal = subtotal + tax;
+
+      // Update badge counts (both top nav & floating button)
+      document.getElementById('navCartBadge').textContent = totalCount;
+      document.getElementById('floatingCartBadge').textContent = totalCount;
+      document.getElementById('floatingCartTotal').textContent = '$' + grandTotal.toFixed(2);
+
+      if (cart.length === 0) {
+        emptyMsg.style.display = 'block';
+        container.innerHTML = '';
+        summarySection.style.display = 'none';
+        return;
+      }
+
+      emptyMsg.style.display = 'none';
+      summarySection.style.display = 'block';
+
+      let html = '';
+      cart.forEach((item, index) => {
+        const lineTotal = (item.price * item.qty).toFixed(2);
+        html += `
+          <div class="cart-item">
+            <div class="cart-item-header">
+              <
