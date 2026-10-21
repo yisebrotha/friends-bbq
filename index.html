@@ -770,4 +770,224 @@
       <div class="review-card">
         <div class="stars">★★★★★</div>
         <p class="review-body">"Friends BBQ was grilling their amazing ribs, chicken and that smoked meatloaf on Magnolia. Unbelievable tenderness and genuine hospitality."</p>
-        <div
+        <div class="review-author">
+          <div class="author-avatar">D</div>
+          <div class="author-info"><h4>David R.</h4><span>Knoxville Local • Magnolia regular</span></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-body">"Extremely good pulled pork and greens. Tasted like it had been seasoned and brined with love. These folks do soul food right."</p>
+        <div class="review-author">
+          <div class="author-avatar">C</div>
+          <div class="author-info"><h4>Carl W.</h4><span>Marble City Market Diner</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE-OUT CART DRAWER -->
+  <div class="cart-drawer-overlay" id="cartOverlay" onclick="toggleCartDrawer(false)"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="drawer-header">
+      <h3 class="drawer-title">Your BBQ Order</h3>
+      <button class="close-drawer" onclick="toggleCartDrawer(false)" aria-label="Close cart">✕</button>
+    </div>
+
+    <div class="drawer-body">
+      <div class="cart-empty" id="emptyCartMsg">
+        <p style="font-size: 2.5rem; margin-bottom: 0.5rem;">🍗</p>
+        <p style="font-weight: 700; color: #fff; margin-bottom: 0.3rem;">Your order is empty</p>
+        <p style="font-size: 0.85rem; color: var(--text-dim);">Click "+ Add to Order" on any menu item to start building your meal.</p>
+      </div>
+
+      <div id="cartItemsContainer"></div>
+    </div>
+
+    <div class="drawer-footer" id="cartSummarySection" style="display: none;">
+      <div class="summary-line"><span>Subtotal</span><span id="cartSubtotal">$0.00</span></div>
+      <div class="summary-line"><span>Tax (9.25%)</span><span id="cartTax">$0.00</span></div>
+      <div class="summary-line total"><span>Total</span><span id="cartGrandTotal">$0.00</span></div>
+      
+      <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="openCheckoutModal()">
+        Proceed to Call-In / Pickup →
+      </button>
+
+      <button class="btn-continue-shopping" onclick="toggleCartDrawer(false)">
+        ← Back to Menu (Continue Ordering)
+      </button>
+    </div>
+  </aside>
+
+  <!-- MODAL -->
+  <div class="checkout-modal-overlay" id="checkoutModal">
+    <div class="checkout-modal">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <h3 style="font-size: 1.6rem; color: #fff;">Call in Your Order</h3>
+        <button onclick="closeCheckoutModal()" style="background: none; border: none; color: #fff; font-size: 1.4rem; cursor: pointer;">✕</button>
+      </div>
+      <p style="margin-bottom: 1.2rem; font-size: 0.9rem;">Your items are saved. Click below to instantly connect with Friends BBQ to confirm pickup time!</p>
+      <a href="tel:8659364290" class="btn btn-primary" style="width: 100%; margin-bottom: 0.6rem;">📞 Call (865) 936-4290</a>
+      <button class="btn-continue-shopping" onclick="closeCheckoutModal()">Close Window</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.8rem;">
+          <img src="logo.png" alt="Friends BBQ Logo" class="brand-logo">
+          <div>
+            <span class="brand-title" style="font-size: 1.6rem;">FRIENDS BBQ</span>
+            <span class="brand-subtitle">KNOXVILLE, TN</span>
+          </div>
+        </div>
+        <p style="font-size: 0.9rem;">Knoxville native soul food and authentic hardwood pit barbecue.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Locations</h4>
+        <ul>
+          <li>Marble City Market (333 W Depot Ave)</li>
+          <li>Magnolia Pit Stand (2580 E Magnolia)</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Links</h4>
+        <ul>
+          <li><a href="https://www.facebook.com/FriendsBBQ/" target="_blank" rel="noopener">Facebook Page</a></li>
+          <li><a href="https://www.instagram.com/llcfriendsbbq/" target="_blank" rel="noopener">Instagram (@llcfriendsbbq)</a></li>
+          <li><a href="https://www.marblecitymarket.com/our-vendors/friends-bbq/" target="_blank" rel="noopener">Marble City Vendor Tab</a></li>
+          <li><a href="https://www.wbir.com/article/news/local/friends-bbq-gives-back-to-the-community-feeds-less-fortunate/51-559057189" target="_blank" rel="noopener">WBIR News Feature</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinks = document.getElementById('navLinks');
+    mobileToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+
+    function filterMenu(cat, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.menu-card').forEach(c => {
+        c.style.display = (cat === 'all' || c.getAttribute('data-category') === cat) ? 'flex' : 'none';
+      });
+    }
+
+    let cart = [];
+
+    function addToCart(title, price) {
+      const existing = cart.find(i => i.title === title);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ title, price: parseFloat(price), qty: 1 });
+      }
+      renderCart();
+      toggleCartDrawer(true);
+    }
+
+    function updateQty(index, delta) {
+      if (cart[index]) {
+        cart[index].qty += delta;
+        if (cart[index].qty <= 0) {
+          removeFromCart(index);
+          return;
+        }
+      }
+      renderCart();
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      renderCart();
+    }
+
+    function toggleCartDrawer(open) {
+      document.getElementById('cartDrawer').classList.toggle('active', open);
+      document.getElementById('cartOverlay').classList.toggle('active', open);
+    }
+
+    function renderCart() {
+      const container = document.getElementById('cartItemsContainer');
+      const emptyMsg = document.getElementById('emptyCartMsg');
+      const summarySection = document.getElementById('cartSummarySection');
+
+      const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      const tax = subtotal * 0.0925;
+      const grandTotal = subtotal + tax;
+
+      // Update top-right navbar badge
+      const navBadge = document.getElementById('navCartBadge');
+      if (navBadge) navBadge.textContent = totalCount;
+
+      if (cart.length === 0) {
+        emptyMsg.style.display = 'block';
+        container.innerHTML = '';
+        summarySection.style.display = 'none';
+        return;
+      }
+
+      emptyMsg.style.display = 'none';
+      summarySection.style.display = 'block';
+
+      let html = '';
+      cart.forEach((item, index) => {
+        const lineTotal = (item.price * item.qty).toFixed(2);
+        html += `
+          <div class="cart-item">
+            <div class="cart-item-header">
+              <div>
+                <div class="cart-item-title">${item.title}</div>
+                <div class="cart-item-subtext">$${item.price.toFixed(2)} each</div>
+              </div>
+              <div class="cart-item-price">$${lineTotal}</div>
+            </div>
+            <div class="cart-item-actions">
+              <div class="qty-group">
+                <button class="qty-btn" onclick="updateQty(${index}, -1)" title="Decrease quantity">−</button>
+                <span class="qty-value">${item.qty}</span>
+                <button class="qty-btn" onclick="updateQty(${index}, 1)" title="Increase quantity">+</button>
+              </div>
+              <button class="btn-remove-item" onclick="removeFromCart(${index})" title="Delete item">
+                🗑 Remove
+              </button>
+            </div>
+          </div>
+        `;
+      });
+
+      container.innerHTML = html;
+
+      document.getElementById('cartSubtotal').textContent = '$' + subtotal.toFixed(2);
+      document.getElementById('cartTax').textContent = '$' + tax.toFixed(2);
+      document.getElementById('cartGrandTotal').textContent = '$' + grandTotal.toFixed(2);
+    }
+
+    function openCheckoutModal() {
+      toggleCartDrawer(false);
+      document.getElementById('checkoutModal').classList.add('active');
+    }
+
+    function closeCheckoutModal() {
+      document.getElementById('checkoutModal').classList.remove('active');
+    }
+
+    function calculateCatering() {
+      const guests = parseInt(document.getElementById('guestCount').value) || 0;
+      const price = parseFloat(document.getElementById('packageType').value);
+      const fee = parseFloat(document.getElementById('serviceStyle').value);
+      const total = (guests * price) + fee;
+      document.getElementById('estTotal').textContent = '$' + Math.round(total).toLocaleString();
+      document.getElementById('estPerPerson').textContent = '~$' + (guests > 0 ? (total/guests).toFixed(2) : 0) + ' per attendee';
+    }
+
+    calculateCatering();
+    renderCart();
+  </script>
+</body>
+</html>
